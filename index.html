@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rio, Paraty FLIP & Vale do Café — Roteiro de André e Ricardo</title>
+  <meta name="description" content="Roteiro premium de viagem entre Rio de Janeiro, Paraty FLIP 2026 e Vale do Café em Vassouras." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #071A2D;
+      --green: #173D2F;
+      --beige: #F4E9D8;
+      --cream: #FFF8EC;
+      --coffee: #6F4E37;
+      --gold: #C8A96A;
+      --white: #ffffff;
+      --muted: #64748b;
+      --shadow: 0 24px 70px rgba(7, 26, 45, .16);
+      --radius: 30px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--navy);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .serif { font-family: 'Playfair Display', serif; }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(7, 26, 45, .72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .nav-inner {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,.78);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .mobile-btn {
+      display: none;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.25);
+      color: white;
+      border-radius: 999px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      color: white;
+      background: var(--navy);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(7,26,45,.55), rgba(7,26,45,.25), rgba(7,26,45,1)),
+        url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2400&q=80') center/cover;
+      transform: scale(1.04);
+      animation: slowZoom 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes slowZoom { from { transform: scale(1.02); } to { transform: scale(1.09); } }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 150px 0 88px;
+      max-width: 900px;
+      animation: fadeUp .9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.1);
+      backdrop-filter: blur(8px);
+      color: rgba(255,255,255,.9);
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.2rem, 8vw, 7.5rem);
+      line-height: .95;
+      max-width: 980px;
+      letter-spacing: -.04em;
+    }
+
+    .hero p {
+      margin-top: 26px;
+      max-width: 720px;
+      color: rgba(255,255,255,.84);
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 14px 20px;
+      font-size: .77rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: .25s ease;
+      cursor: pointer;
+      border: 0;
+    }
+
+    .btn-primary { background: var(--gold); color: var(--navy); box-shadow: 0 20px 40px rgba(200,169,106,.25); }
+    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .btn-ghost { background: rgba(255,255,255,.12); color: white; border: 1px solid rgba(255,255,255,.28); }
+    .btn-ghost:hover { background: rgba(255,255,255,.2); }
+    .btn-dark { background: var(--navy); color: white; }
+
+    /* SECTIONS */
+    section { padding: 88px 0; }
+    .section-beige { background: var(--beige); }
+    .section-cream { background: var(--cream); }
+    .section-dark { background: var(--navy); color: white; }
+    .section-green { background: var(--green); color: white; }
+
+    .section-title {
+      max-width: 820px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .34em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -.03em;
+    }
+
+    .section-title p {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .section-dark .section-title p,
+    .section-green .section-title p { color: rgba(255,255,255,.72); }
+
+    /* TIMELINE */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .timeline-card, .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .timeline-card .icon,
+    .card .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--gold);
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      font-size: 1.4rem;
+    }
+
+    .timeline-card small {
+      color: var(--coffee);
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .timeline-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-top: 6px;
+    }
+
+    .timeline-card p { color: var(--muted); margin-top: 10px; font-size: .92rem; }
+
+    .quick-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .quick-card {
+      color: white;
+      border-radius: var(--radius);
+      padding: 26px;
+      min-height: 130px;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+
+    .quick-card:nth-child(1) { background: var(--navy); }
+    .quick-card:nth-child(2) { background: var(--green); }
+    .quick-card:nth-child(3) { background: var(--coffee); }
+    .quick-card span { display: block; color: var(--gold); font-size: 1.7rem; margin-bottom: 12px; }
+
+    /* FILTERS */
+    .filters {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 38px;
+    }
+
+    .filter-btn {
+      border: 0;
+      background: var(--beige);
+      color: var(--navy);
+      padding: 10px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 800;
+      transition: .2s ease;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--navy);
+      color: white;
+    }
+
+    /* ITINERARY */
+    .itinerary-list {
+      display: grid;
+      gap: 32px;
+    }
+
+    .day-card {
+      overflow: hidden;
+      border-radius: 36px;
+      background: #F8F3EA;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      animation: fadeUp .6s ease both;
+    }
+
+    .day-image {
+      position: relative;
+      min-height: 420px;
+      overflow: hidden;
+    }
+
+    .day-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      transition: .6s ease;
+    }
+
+    .day-card:hover .day-image img { transform: scale(1.06); }
+
+    .day-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(7,26,45,.9), rgba(7,26,45,.18), transparent);
+    }
+
+    .day-heading {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 2;
+      color: white;
+    }
+
+    .day-tag {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.15);
+      backdrop-filter: blur(8px);
+      font-size: .75rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .day-heading h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.03;
+    }
+
+    .day-body { padding: 30px; }
+    .day-body > p { color: #475569; margin-bottom: 24px; }
+
+    .period-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .period-box {
+      background: white;
+      border-radius: 24px;
+      padding: 18px;
+    }
+
+    .period-box h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .period-box li {
+      list-style: none;
+      color: #64748b;
+      font-size: .88rem;
+      margin-bottom: 8px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .period-box li::before { content: "✓"; color: var(--gold); font-weight: 900; }
+
+    .food-box, .content-box {
+      background: white;
+      border-radius: 24px;
+      padding: 18px;
+      margin-top: 16px;
+    }
+
+    .food-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .food-tags a {
+      background: var(--beige);
+      color: var(--coffee);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 800;
+      transition: .2s;
+    }
+    .food-tags a:hover { background: var(--gold); color: white; }
+
+    .content-box {
+      background: #fffaf0;
+      border: 1px solid rgba(200,169,106,.35);
+      color: #475569;
+    }
+
+    .content-box strong, .food-box strong { color: var(--navy); }
+
+    /* FEATURE SECTIONS */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .feature-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5vw, 5rem);
+      line-height: 1;
+    }
+
+    .feature-title p { margin-top: 22px; color: rgba(255,255,255,.74); font-size: 1.08rem; }
+
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .glass-card {
+      border-radius: 28px;
+      padding: 24px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.13);
+      backdrop-filter: blur(12px);
+    }
+
+    .glass-card .emoji { font-size: 1.8rem; color: var(--gold); display: block; margin-bottom: 14px; }
+    .glass-card h3 { font-family: 'Playfair Display', serif; font-size: 1.55rem; margin-bottom: 8px; }
+    .glass-card p { color: rgba(255,255,255,.72); font-size: .92rem; }
+
+    .coffee-grid, .stays-grid, .restaurant-grid, .content-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .coffee-grid .card { color: var(--navy); }
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .card p, .card li { color: #64748b; font-size: .93rem; }
+    .card ul { margin-top: 14px; display: grid; gap: 7px; padding-left: 0; }
+    .card li { list-style: none; display: flex; gap: 8px; }
+    .card li::before { content: "✓"; color: var(--gold); font-weight: 900; }
+
+    .restaurant-grid { grid-template-columns: repeat(4, 1fr); }
+    .restaurant-card { background: white; border-radius: 30px; padding: 24px; box-shadow: var(--shadow); }
+    .restaurant-card h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 14px; }
+    .restaurant-card a {
+      display: block;
+      background: var(--beige);
+      color: var(--coffee);
+      padding: 11px 14px;
+      border-radius: 16px;
+      font-size: .9rem;
+      font-weight: 750;
+      margin-bottom: 8px;
+      transition: .2s;
+    }
+    .restaurant-card a:hover { background: var(--gold); color: white; transform: translateX(3px); }
+
+    .content-grid { grid-template-columns: repeat(4, 1fr); }
+    .content-card {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 30px;
+      padding: 24px;
+    }
+    .content-card small { color: var(--gold); font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+    .content-card h3 { font-family: 'Playfair Display', serif; font-size: 1.45rem; margin: 8px 0 14px; }
+    .content-card p { color: rgba(255,255,255,.72); font-size: .9rem; margin-top: 10px; }
+
+    /* MAP */
+    .map-shell {
+      overflow: hidden;
+      border-radius: 38px;
+      background: var(--navy);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+    }
+
+    .map-visual {
+      position: relative;
+      min-height: 540px;
+      color: white;
+      padding: 34px;
+      overflow: hidden;
+    }
+
+    .map-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(7,26,45,.62), rgba(7,26,45,.82)), url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1600&q=80') center/cover;
+      opacity: .85;
+    }
+
+    .map-visual > * { position: relative; z-index: 2; }
+    .map-visual h3 { font-family: 'Playfair Display', serif; font-size: 3rem; line-height: 1; }
+    .map-visual p { margin-top: 18px; color: rgba(255,255,255,.75); max-width: 430px; }
+
+    .map-mini {
+      margin-top: 28px;
+      display: grid;
+      gap: 12px;
+    }
+    .map-mini div {
+      border-radius: 24px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 16px;
+      backdrop-filter: blur(10px);
+      font-weight: 700;
+    }
+
+    .map-list {
+      background: var(--beige);
+      padding: 28px;
+      max-height: 610px;
+      overflow-y: auto;
+    }
+
+    .search {
+      width: 100%;
+      border: 0;
+      border-radius: 999px;
+      padding: 16px 18px;
+      outline: none;
+      margin-bottom: 18px;
+      font-weight: 700;
+      box-shadow: 0 12px 30px rgba(7,26,45,.08);
+    }
+
+    .map-point {
+      display: block;
+      background: white;
+      border-radius: 24px;
+      padding: 18px;
+      margin-bottom: 12px;
+      transition: .2s;
+    }
+    .map-point:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(7,26,45,.08); }
+    .map-point h4 { font-family: 'Playfair Display', serif; font-size: 1.25rem; }
+    .map-point p { color: var(--muted); font-size: .9rem; }
+
+    /* CHECKLIST */
+    .check-grid {
+      display: grid;
+      grid-template-columns: 1fr .9fr;
+      gap: 22px;
+    }
+
+    .check-list {
+      background: white;
+      border-radius: 34px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .check-item {
+      background: #F8F3EA;
+      border-radius: 20px;
+      padding: 16px;
+      color: #475569;
+      font-size: .92rem;
+      font-weight: 600;
+    }
+
+    .rain-card {
+      background: var(--navy);
+      color: white;
+      border-radius: 34px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .rain-card h3 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 12px; }
+    .rain-card p { color: rgba(255,255,255,.72); margin-bottom: 22px; }
+
+    footer {
+      background: var(--navy);
+      color: white;
+      text-align: center;
+      padding: 50px 16px;
+    }
+    footer h2 { font-family: 'Playfair Display', serif; font-size: 2rem; }
+    footer .dates { color: rgba(255,255,255,.55); letter-spacing: .25em; text-transform: uppercase; font-size: .8rem; margin-top: 8px; }
+    footer .places { color: var(--gold); margin-top: 14px; }
+    footer p:last-child { color: rgba(255,255,255,.65); margin-top: 18px; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1000px) {
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 74px;
+        left: 0;
+        right: 0;
+        background: var(--navy);
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: 1px solid rgba(255,255,255,.12);
+      }
+      .nav-links.open { display: flex; }
+      .mobile-btn { display: block; }
+      .timeline, .quick-grid, .period-grid, .feature-grid, .coffee-grid, .stays-grid, .restaurant-grid, .content-grid, .map-shell, .check-grid {
+        grid-template-columns: 1fr;
+      }
+      .day-card { grid-template-columns: 1fr; }
+      .day-image { min-height: 360px; }
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 68px 0; }
+      .hero-content { padding-bottom: 60px; }
+      .hero-actions .btn { width: 100%; }
+      .check-list { grid-template-columns: 1fr; }
+      .day-body { padding: 20px; }
+      .period-grid { grid-template-columns: 1fr; }
+      .feature-cards { grid-template-columns: 1fr; }
+      .map-visual h3 { font-size: 2.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">André & Ricardo</a>
+      <button class="mobile-btn" id="mobileBtn">Menu</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#visao">Visão Geral</a>
+        <a href="#roteiro">Roteiro</a>
+        <a href="#flip">FLIP</a>
+        <a href="#cafe">Vale do Café</a>
+        <a href="#hospedagens">Hospedagens</a>
+        <a href="#mapa">Mapa</a>
+        <a href="#gastronomia">Restaurantes</a>
+        <a href="#conteudo">Conteúdo</a>
+        <a href="#checklist">Checklist</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container hero-content">
+      <div class="badges">
+        <span class="badge">20 a 31 de julho de 2026</span>
+        <span class="badge">Rio • Paraty • Vassouras</span>
+        <span class="badge">Literatura • Praia • Café</span>
+      </div>
+      <h1>Rio, Paraty FLIP & Vale do Café</h1>
+      <p>Uma viagem entre literatura, mar, cafés históricos e o Brasil Imperial.</p>
+      <div class="hero-actions">
+        <a href="#roteiro" class="btn btn-primary">Ver roteiro completo</a>
+        <a href="#mapa" class="btn btn-ghost">Abrir mapa interativo</a>
+        <a href="#conteudo" class="btn btn-ghost">Conteúdo Instagram/TikTok</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section-beige" id="visao">
+    <div class="container">
+      <div class="section-title reveal">
+        <div class="eyebrow">Visão geral</div>
+        <h2>Uma rota cultural com começo e fim no Rio</h2>
+        <p>A viagem combina o Rio mais local e boêmio, a atmosfera literária da FLIP em Paraty e as fazendas históricas do Vale do Café em Vassouras.</p>
+      </div>
+
+      <div class="timeline reveal">
+        <div class="timeline-card"><div class="icon">🌊</div><small>20 a 22/07</small><h3>Rio de Janeiro</h3><p>Base no Flamengo.</p></div>
+        <div class="timeline-card"><div class="icon">📚</div><small>22 a 26/07</small><h3>Paraty</h3><p>FLIP 2026 • Pousada Doce Paraty.</p></div>
+        <div class="timeline-card"><div class="icon">☕</div><small>26 a 29/07</small><h3>Vassouras</h3><p>Vale do Café • Vila Hibisco.</p></div>
+        <div class="timeline-card"><div class="icon">🌊</div><small>29 a 31/07</small><h3>Rio de Janeiro</h3><p>Base no Flamengo.</p></div>
+        <div class="timeline-card"><div class="icon">✈️</div><small>31/07</small><h3>Brasília</h3><p>Retorno para casa.</p></div>
+      </div>
+
+      <div class="quick-grid reveal">
+        <div class="quick-card"><span>🚗</span>Carro alugado para Paraty e Vassouras.</div>
+        <div class="quick-card"><span>📖</span>FLIP 2026 como eixo literário da viagem.</div>
+        <div class="quick-card"><span>☕</span>Vale do Café como experiência histórica.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roteiro">
+    <div class="container">
+      <div class="section-title reveal">
+        <div class="eyebrow">Dia a dia</div>
+        <h2>Roteiro completo da viagem</h2>
+        <p>Cards com manhã, tarde, noite, gastronomia e ideias de conteúdo para cada etapa.</p>
+      </div>
+
+      <div class="filters reveal">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="rio">Rio</button>
+        <button class="filter-btn" data-filter="paraty">Paraty</button>
+        <button class="filter-btn" data-filter="vassouras">Vassouras</button>
+      </div>
+
+      <div class="itinerary-list" id="itineraryList"></div>
+    </div>
+  </section>
+
+  <section class="section-dark" id="flip">
+    <div class="container feature-grid">
+      <div class="feature-title reveal">
+        <div class="eyebrow">FLIP 2026</div>
+        <h2>Paraty em modo literatura</h2>
+        <p>A FLIP transforma Paraty em um grande circuito de mesas, casas editoriais, cafés, encontros e caminhadas literárias pelas ruas coloniais.</p>
+      </div>
+      <div class="feature-cards reveal">
+        <div class="glass-card"><span class="emoji">📚</span><h3>Escolha 1 mesa imperdível por dia</h3><p>Evita transformar o festival em maratona e deixa espaço para descobertas.</p></div>
+        <div class="glass-card"><span class="emoji">☕</span><h3>Use cafés como pausa estratégica</h3><p>A cidade fica cheia; pausas salvam o ritmo da viagem.</p></div>
+        <div class="glass-card"><span class="emoji">📸</span><h3>Fotografe cedo</h3><p>O Centro Histórico rende mais antes do fluxo intenso da tarde.</p></div>
+        <div class="glass-card"><span class="emoji">🍽️</span><h3>Reserve restaurantes</h3><p>Durante a FLIP, as melhores casas lotam rapidamente.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-green" id="cafe">
+    <div class="container">
+      <div class="feature-title reveal" style="max-width: 820px; margin-bottom: 42px;">
+        <div class="eyebrow">Vale do Café</div>
+        <h2>Vassouras e a memória do Brasil Imperial</h2>
+        <p>Uma etapa para visitar fazendas históricas, entender o ciclo do café, observar arquitetura rural e refletir sobre patrimônio, escravidão e memória.</p>
+      </div>
+      <div class="coffee-grid reveal">
+        <div class="card"><div class="icon">☕</div><h3>Fazenda São Luiz da Boa Sorte</h3><p>Experiência completa com museu, memorial, arquitetura e paisagens rurais.</p><br><a class="btn btn-dark" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Fazenda%20S%C3%A3o%20Luiz%20da%20Boa%20Sorte%20Vassouras%20RJ">Abrir no Maps</a></div>
+        <div class="card"><div class="icon">🏛️</div><h3>Fazenda Santa Eufrásia</h3><p>Visita guiada, jardins, cafezal, casa histórica e possibilidade de lanche imperial.</p><br><a class="btn btn-dark" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Fazenda%20Santa%20Eufr%C3%A1sia%20Vassouras%20RJ">Abrir no Maps</a></div>
+        <div class="card"><div class="icon">🌿</div><h3>Fazenda Ponte Alta</h3><p>Uma das visitas clássicas para compreender o ciclo cafeeiro e a vida rural histórica.</p><br><a class="btn btn-dark" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Fazenda%20Ponte%20Alta%20Vassouras%20RJ">Abrir no Maps</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-beige" id="hospedagens">
+    <div class="container">
+      <div class="section-title reveal">
+        <div class="eyebrow">Hospedagens</div>
+        <h2>Bases estratégicas da viagem</h2>
+        <p>Hospedagens escolhidas para favorecer circulação a pé, eventos, gastronomia e deslocamentos de carro.</p>
+      </div>
+      <div class="stays-grid reveal">
+        <div class="card"><div class="icon">❤️</div><h3>Casa de amigo — Flamengo</h3><p>Base prática para Aterro, Botafogo, Urca, praias, bares e livrarias.</p><ul><li>Localização estratégica</li><li>Boa saída para Santa Teresa</li><li>Clima local</li></ul><br><a class="btn btn-dark" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Flamengo%20Rio%20de%20Janeiro">Abrir no Maps</a></div>
+        <div class="card"><div class="icon">🏨</div><h3>Pousada Doce Paraty</h3><p>Hospedagem em Paraty para viver a FLIP com acesso prático ao Centro Histórico.</p><ul><li>Ideal para a FLIP</li><li>Atmosfera colonial</li><li>Boa para circular a pé</li></ul><br><a class="btn btn-dark" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Pousada%20Doce%20Paraty%20Paraty%20RJ">Abrir no Maps</a></div>
+        <div class="card"><div class="icon">🏨</div><h3>Vila Hibisco Pousada e Apart</h3><p>Hospedagem no centro de Vassouras, perfeita para visitar fazendas durante o dia.</p><ul><li>Centro de Vassouras</li><li>Praticidade noturna</li><li>Base para fazendas</li></ul><br><a class="btn btn-dark" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Vila%20Hibisco%20Pousada%20e%20Apart%20Vassouras%20RJ">Abrir no Maps</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mapa">
+    <div class="container">
+      <div class="section-title reveal">
+        <div class="eyebrow">Mapa interativo</div>
+        <h2>Pontos da viagem no mapa</h2>
+        <p>Use a busca e os botões para abrir cada ponto diretamente no Google Maps.</p>
+      </div>
+      <div class="map-shell reveal">
+        <div class="map-visual">
+          <h3>Mapa afetivo da rota</h3>
+          <p>Rio local, Paraty literária e Vassouras histórica reunidos em uma rota de carro, praia, livros e café.</p>
+          <div class="map-mini">
+            <div>🚗 Rio → Paraty → Vassouras → Rio</div>
+            <div>📍 Marcadores com descrição e acesso rápido</div>
+            <div>☕ Cultura, gastronomia, literatura e história</div>
+          </div>
+        </div>
+        <div class="map-list">
+          <input class="search" id="mapSearch" placeholder="Buscar ponto no mapa..." />
+          <div id="mapPoints"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-cream" id="gastronomia">
+    <div class="container">
+      <div class="section-title reveal">
+        <div class="eyebrow">Gastronomia</div>
+        <h2>Bares, restaurantes e cafés</h2>
+        <p>Uma seleção organizada por cidade, pensada para combinar com o ritmo de cada dia.</p>
+      </div>
+      <div class="restaurant-grid reveal" id="restaurants"></div>
+    </div>
+  </section>
+
+  <section class="section-dark" id="conteudo">
+    <div class="container">
+      <div class="feature-title reveal" style="max-width: 820px; margin-bottom: 42px;">
+        <div class="eyebrow">Instagram/TikTok</div>
+        <h2>Conteúdo da viagem</h2>
+        <p>Ideias prontas para transformar a viagem em narrativa visual: hooks, takes e chamadas para engajamento.</p>
+      </div>
+      <div class="content-grid reveal" id="contentIdeas"></div>
+    </div>
+  </section>
+
+  <section class="section-beige" id="checklist">
+    <div class="container">
+      <div class="section-title reveal">
+        <div class="eyebrow">Checklist</div>
+        <h2>Antes de viajar</h2>
+        <p>Itens práticos para a viagem fluir bem, especialmente por causa da FLIP e das visitas guiadas nas fazendas.</p>
+      </div>
+      <div class="check-grid reveal">
+        <div class="check-list" id="checkList"></div>
+        <div class="rain-card">
+          <h3>Plano B em caso de chuva</h3>
+          <p>Priorizar livrarias, cafés, casas editoriais, museus, restaurantes com reserva e visitas guiadas cobertas. Em Paraty, trocar barco por alambiques e cafés; no Rio, trocar praia por livrarias e bares; em Vassouras, confirmar se as visitas internas seguem normalmente.</p>
+          <button class="btn btn-primary" onclick="window.print()">Baixar/Imprimir roteiro</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <h2>Roteiro de André e Ricardo</h2>
+    <div class="dates">20 a 31 de julho de 2026</div>
+    <div class="places">Rio de Janeiro • Paraty • Vale do Café</div>
+    <p>“Entre livros, praias, cafés e memórias: uma viagem pelo Brasil cultural.”</p>
+  </footer>
+
+  <script>
+    const maps = (query) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+
+    const days = [
+      {
+        date: "SEG 20/07", city: "Rio de Janeiro", category: "rio", title: "Brasília → Rio de Janeiro",
+        image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1600&q=80",
+        summary: "Chegada ao Rio, base no Flamengo e primeira noite com clima carioca, sem pressa e sem roteiro turístico clássico.",
+        morning: ["Voo Brasília → Rio de Janeiro", "Deslocamento para a casa de amigo no Flamengo"],
+        afternoon: ["Caminhada leve no Aterro do Flamengo", "Fim de tarde entre Botafogo e Urca"],
+        night: ["Jantar leve no Flamengo/Botafogo", "Primeiro brinde da viagem"],
+        food: ["Bar Urca", "Belmonte Flamengo", "Carmelo Armazém", "Irajá Redux", "Xepa"],
+        content: "Reels: ‘Começando uma viagem cultural pelo Rio antes da FLIP’. Takes do Aterro, Botafogo e mesa de bar."
+      },
+      {
+        date: "TER 21/07", city: "Rio de Janeiro", category: "rio", title: "Santa Teresa + Escadaria Selarón",
+        image: "https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?auto=format&fit=crop&w=1600&q=80",
+        summary: "Dia cultural e boêmio para conhecer Santa Teresa, a Escadaria Selarón e o lado artístico do Rio.",
+        morning: ["Subida para Santa Teresa", "Largo dos Guimarães", "Bondinho de Santa Teresa"],
+        afternoon: ["Parque das Ruínas", "Chácara do Céu", "Escadaria Selarón para fotos de dia"],
+        night: ["Jantar ou drinks em Santa Teresa", "Opção de esticar para a Lapa, se houver energia"],
+        food: ["Bar do Mineiro", "Aprazível", "Explorer Bar", "Sobrenatural", "Bar da Fatinha"],
+        content: "Hook: ‘O Rio que vai além dos cartões-postais’. Takes: bondinho, casarões, azulejos da Selarón e bar em Santa Teresa."
+      },
+      {
+        date: "QUA 22/07", city: "Paraty", category: "paraty", title: "Rio → Paraty + início da FLIP",
+        image: "https://images.unsplash.com/photo-1598846481052-f49c70618508?auto=format&fit=crop&w=1600&q=80",
+        summary: "Retirada do carro, estrada para Paraty, check-in na Pousada Doce Paraty e primeira noite no clima da FLIP.",
+        morning: ["Retirada do carro no Rio", "Saída cedo para Paraty", "Estrada com clima de roadtrip cultural"],
+        afternoon: ["Check-in na Pousada Doce Paraty", "Primeira caminhada pelo Centro Histórico", "Igreja Santa Rita e Cais de Paraty"],
+        night: ["Circular pelas casas literárias", "Sentir o início da FLIP 2026", "Jantar no Centro Histórico"],
+        food: ["Margarida Café", "Thai Paraty", "Quintal das Letras"],
+        content: "Reels: ‘Chegamos em Paraty para a FLIP’. Takes da estrada, pousada, ruas de pedra, livros e noite colonial."
+      },
+      {
+        date: "QUI 23/07", city: "Paraty", category: "paraty", title: "Paraty + FLIP",
+        image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=1600&q=80",
+        summary: "Dia dedicado à FLIP, às casas editoriais, às mesas literárias e ao Centro Histórico em ritmo de festival.",
+        morning: ["Centro Histórico cedo", "Fotos nas ruas coloniais", "Café e livrarias"],
+        afternoon: ["Mesas da FLIP", "Programação paralela", "Pausa para café e descanso"],
+        night: ["Mesa principal ou evento paralelo", "Jantar especial em Paraty"],
+        food: ["Banana da Terra", "Quintal das Letras", "Thai Paraty", "Margarida Café"],
+        content: "Hook: ‘Como é viver a FLIP em Paraty’. Takes: livros, filas, mesas, cafés e casario iluminado."
+      },
+      {
+        date: "SEX 24/07", city: "Paraty", category: "paraty", title: "Natureza curta + FLIP",
+        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80",
+        summary: "Manhã de mar, cachoeira ou alambique, seguida de tarde e noite literária na FLIP.",
+        morning: ["Opção 1: passeio de barco", "Opção 2: cachoeiras e alambiques", "Pedra Branca, Poço do Tarzan ou Engenho D’Ouro"],
+        afternoon: ["Retorno ao Centro Histórico", "Programação da FLIP", "Café/livraria no fim da tarde"],
+        night: ["Jantar e programação noturna", "Caminhada pelas ruas iluminadas"],
+        food: ["Celeiro Armazém Tropical", "Margarida Café", "Quintal das Letras"],
+        content: "Reels: ‘Paraty entre mar, cachoeira e literatura’. Alternar takes de natureza com cenas de livros."
+      },
+      {
+        date: "SÁB 25/07", city: "Paraty", category: "paraty", title: "Dia forte da FLIP",
+        image: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80",
+        summary: "O sábado mais intenso em Paraty: livrarias, mesas principais, gastronomia e última grande noite da FLIP.",
+        morning: ["Café com calma", "Livrarias e casas editoriais", "Compras de livros e lembranças"],
+        afternoon: ["Mesas principais", "Programação cultural", "Pausa estratégica na pousada"],
+        night: ["Última noite forte da FLIP", "Jantar com reserva antecipada", "Caminhada noturna pelo Centro"],
+        food: ["Banana da Terra", "Quintal das Letras", "Celeiro Armazém Tropical"],
+        content: "Hook: ‘O dia mais literário da viagem’. Takes de livros, comida, multidão, fachadas coloniais e noite de Paraty."
+      },
+      {
+        date: "DOM 26/07", city: "Vassouras", category: "vassouras", title: "Paraty → Vassouras",
+        image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
+        summary: "Despedida de Paraty, estrada para o Vale do Café e chegada à Vila Hibisco Pousada e Apart.",
+        morning: ["Último café em Paraty", "Última volta pelo Centro Histórico", "Compra de livros/cachaça/lembranças"],
+        afternoon: ["Estrada para Vassouras", "Check-in na Vila Hibisco Pousada e Apart"],
+        night: ["Caminhada pelo centro histórico", "Praça Barão de Campo Belo", "Jantar leve"],
+        food: ["Cafés locais", "Restaurantes no centro histórico"],
+        content: "Reels: ‘De Paraty ao Vale do Café’. Takes da estrada, check-in, casarões e noite tranquila em Vassouras."
+      },
+      {
+        date: "SEG 27/07", city: "Vassouras", category: "vassouras", title: "Fazendas históricas do Vale do Café",
+        image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1600&q=80",
+        summary: "Dia dedicado à história do café, com Fazenda São Luiz da Boa Sorte pela manhã e Santa Eufrásia à tarde, mediante agendamento.",
+        morning: ["Fazenda São Luiz da Boa Sorte", "Museu, memorial e visita guiada", "Arquitetura rural e paisagens"],
+        afternoon: ["Fazenda Santa Eufrásia", "Visita guiada", "Jardins, cafezal, casa histórica e lanche imperial, se disponível"],
+        night: ["Centro histórico de Vassouras", "Jantar e descanso"],
+        food: ["Cafés locais", "Restaurantes do centro"],
+        content: "Hook: ‘O Brasil Império ainda vive no Vale do Café’. Takes: fachadas, jardins, café, detalhes históricos e estrada rural."
+      },
+      {
+        date: "TER 28/07", city: "Vassouras", category: "vassouras", title: "Fazenda Ponte Alta + Centro histórico",
+        image: "https://images.unsplash.com/photo-1525344387229-da3782d11618?auto=format&fit=crop&w=1600&q=80",
+        summary: "Visita à Fazenda Ponte Alta pela manhã e tarde leve no centro histórico, Museu Casa da Hera e cafés.",
+        morning: ["Fazenda Ponte Alta", "Visita guiada", "História do café e arquitetura rural"],
+        afternoon: ["Praça Barão de Campo Belo", "Igreja Matriz", "Museu Casa da Hera", "Cafés e lojinhas"],
+        night: ["Última noite em Vassouras", "Jantar tranquilo"],
+        food: ["Cafés históricos", "Restaurantes no entorno da praça"],
+        content: "Reels: ‘Vassouras em um dia: fazenda, centro histórico e café’. Takes de detalhes coloniais e walking tour."
+      },
+      {
+        date: "QUA 29/07", city: "Rio de Janeiro", category: "rio", title: "Vassouras → Rio",
+        image: "https://images.unsplash.com/photo-1544989164-31dc3c645987?auto=format&fit=crop&w=1600&q=80",
+        summary: "Retorno para o Flamengo, noite leve e jantar sem deslocamentos longos.",
+        morning: ["Check-out com calma", "Última caminhada pelo centro de Vassouras"],
+        afternoon: ["Estrada para o Rio", "Chegada ao Flamengo"],
+        night: ["Jantar leve em Flamengo/Botafogo", "Descanso pós-estrada"],
+        food: ["Belmonte", "Carmelo Armazém", "Brota", "Mitsuo"],
+        content: "Storytelling: ‘Voltando ao Rio depois do Vale do Café’. Mostrar contraste entre interior histórico e orla urbana."
+      },
+      {
+        date: "QUI 30/07", city: "Rio de Janeiro", category: "rio", title: "Praia + livrarias + bares",
+        image: "https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?auto=format&fit=crop&w=1600&q=80",
+        summary: "Último dia inteiro no Rio com praia, livrarias, cafés e bares — sem roteiro turístico óbvio.",
+        morning: ["Praia de Ipanema ou Leblon", "Caminhada na orla", "Café pós-praia"],
+        afternoon: ["Livraria da Travessa", "Argumento", "Janela Livraria", "Blooks"],
+        night: ["Arpoador ou Mureta da Urca no fim de tarde", "Bares: Jobi, Boteco Rainha, Galeto Sat’s, Canastra Bar ou Beco do Rato"],
+        food: ["Jobi", "Boteco Rainha", "Galeto Sat’s", "Canastra Bar", "Beco do Rato"],
+        content: "Hook: ‘Um Rio de praia, livros e boteco’. Takes: areia, capa de livro, café, brinde e pôr do sol."
+      },
+      {
+        date: "SEX 31/07", city: "Rio de Janeiro", category: "rio", title: "Rio → Brasília",
+        image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80",
+        summary: "Café da manhã no Flamengo, última caminhada no Aterro, devolução do carro e retorno para Brasília.",
+        morning: ["Café da manhã no Flamengo", "Última caminhada no Aterro", "Organização das malas"],
+        afternoon: ["Devolução do carro", "Voo Rio → Brasília"],
+        night: ["Chegada em Brasília", "Fim da viagem"],
+        food: ["Café no Flamengo", "Lanche de aeroporto, se necessário"],
+        content: "Reels final: ‘Entre livros, praias, cafés e memórias’. Montagem com os melhores takes da viagem."
+      }
+    ];
+
+    const mapPoints = [
+      ["Flamengo", "Base no Rio", "Rio de Janeiro Flamengo"],
+      ["Aterro do Flamengo", "Caminhada, vista e respiro urbano", "Aterro do Flamengo Rio de Janeiro"],
+      ["Santa Teresa", "Arte, bondinho, ateliês e bares", "Santa Teresa Rio de Janeiro"],
+      ["Escadaria Selarón", "Azulejos, fotos e cultura urbana", "Escadaria Selarón Rio de Janeiro"],
+      ["Urca", "Fim de 
