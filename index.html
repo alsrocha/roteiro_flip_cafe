@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#071a2d" />
+  <meta name="description" content="Guia Interativo Premium de André e Ricardo para Rio, Paraty FLIP e Vale do Café 2026." />
+  <title>Rio, Paraty FLIP & Vale do Café 2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy:#071a2d;
+      --green:#173d2f;
+      --beige:#f4e9d8;
+      --cream:#fffaf2;
+      --coffee:#6f4e37;
+      --gold:#c8a96a;
+      --ink:#132238;
+      --muted:#64748b;
+      --line:rgba(7,26,45,.10);
+      --white:#ffffff;
+      --card:#ffffff;
+      --surface:#f8f4ed;
+      --shadow:0 24px 70px rgba(7,26,45,.14);
+      --radius-xl:32px;
+      --radius-lg:24px;
+      --radius-md:18px;
+    }
+
+    body.dark{
+      --white:#0d1d2d;
+      --card:#122536;
+      --surface:#0f2231;
+      --cream:#0c1a28;
+      --beige:#132536;
+      --ink:#f5f7fa;
+      --muted:#b7c2cf;
+      --line:rgba(255,255,255,.10);
+      --shadow:0 24px 70px rgba(0,0,0,.30);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,system-ui,sans-serif;
+      color:var(--ink);
+      background:var(--white);
+      line-height:1.6;
+      transition:background .25s ease,color .25s ease;
+    }
+    img{display:block;max-width:100%}
+    a{text-decoration:none;color:inherit}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    .container{width:min(1180px,calc(100% - 32px));margin-inline:auto}
+    .serif{font-family:"Playfair Display",serif}
+    .section{padding:88px 0}
+    .section.alt{background:var(--cream)}
+    .section.dark{background:var(--navy);color:#fff}
+    .section.green{background:var(--green);color:#fff}
+    .section-head{max-width:820px;margin-bottom:38px}
+    .eyebrow{font-size:.76rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+    h1,h2,h3{font-family:"Playfair Display",serif;line-height:1.05}
+    .section-head h2{font-size:clamp(2.2rem,5vw,4.4rem);letter-spacing:-.03em}
+    .section-head p{margin-top:16px;color:var(--muted);font-size:1.03rem}
+    .dark .section-head p,.green .section-head p{color:rgba(255,255,255,.72)}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-xl);box-shadow:var(--shadow)}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);font-size:.78rem;font-weight:700}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:999px;padding:13px 18px;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;transition:.2s ease}
+    .btn:hover{transform:translateY(-2px)}
+    .btn.primary{background:var(--gold);color:var(--navy)}
+    .btn.dark{background:var(--navy);color:#fff}
+    .btn.light{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2)}
+    .btn.soft{background:var(--beige);color:var(--coffee)}
+    .icon-btn{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.10);color:#fff}
+
+    /* NAV */
+    .topbar{position:fixed;inset:0 0 auto 0;z-index:1000;background:rgba(7,26,45,.72);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.10)}
+    .topbar-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{font-family:"Playfair Display",serif;font-size:1.2rem;font-weight:800;color:#fff;white-space:nowrap}
+    .desktop-nav{display:flex;gap:16px;align-items:center}
+    .desktop-nav a{font-size:.72rem;color:rgba(255,255,255,.78);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .desktop-nav a:hover{color:var(--gold)}
+    .top-actions{display:flex;gap:8px;align-items:center}
+    .mobile-menu{display:none;position:fixed;inset:72px 0 auto 0;z-index:999;background:var(--navy);padding:18px 16px 22px;border-bottom:1px solid rgba(255,255,255,.1)}
+    .mobile-menu.open{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .mobile-menu a{padding:12px;border-radius:16px;background:rgba(255,255,255,.08);color:#fff;font-size:.84rem;font-weight:700}
+    .mobile-toggle{display:none}
+
+    /* HERO */
+    .hero{min-height:100svh;position:relative;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:var(--navy)}
+    .hero-media{position:absolute;inset:0}
+    .hero-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
+    .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,26,45,.45),rgba(7,26,45,.25),rgba(7,26,45,.96))}
+    .hero-content{position:relative;z-index:2;padding:150px 0 84px}
+    .hero h1{font-size:clamp(3.1rem,8vw,7.5rem);letter-spacing:-.05em;max-width:980px}
+    .hero-copy{font-size:clamp(1.08rem,2vw,1.4rem);max-width:740px;color:rgba(255,255,255,.82);margin-top:22px}
+    .hero-badges,.hero-actions{display:flex;flex-wrap:wrap;gap:10px}
+    .hero-badges{margin-bottom:18px}
+    .hero-actions{margin-top:30px}
+
+    /* DESTINATION NAV */
+    .destination-strip{position:sticky;top:72px;z-index:900;background:var(--card);border-bottom:1px solid var(--line);overflow:auto}
+    .destination-strip .inner{display:flex;gap:10px;padding:12px 0;min-width:max-content}
+    .destination-chip{border:none;background:var(--surface);color:var(--ink);padding:10px 15px;border-radius:999px;font-size:.82rem;font-weight:800}
+    .destination-chip.active{background:var(--navy);color:#fff}
+
+    /* OVERVIEW */
+    .overview-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+    .overview-card{padding:24px}
+    .overview-card .emoji{font-size:1.8rem;margin-bottom:14px}
+    .overview-card small{font-weight:800;color:var(--coffee);text-transform:uppercase;letter-spacing:.08em}
+    .overview-card h3{font-size:1.55rem;margin-top:5px}
+    .overview-card p{margin-top:8px;color:var(--muted);font-size:.9rem}
+    .quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px}
+    .quick-card{padding:22px;border-radius:var(--radius-lg);color:#fff;min-height:126px}
+    .quick-card:nth-child(1){background:var(--navy)}
+    .quick-card:nth-child(2){background:var(--green)}
+    .quick-card:nth-child(3){background:var(--coffee)}
+    .quick-card:nth-child(4){background:#8a6a2c}
+    .quick-card strong{display:block;font-size:1.25rem;margin-bottom:8px}
+
+    /* ITINERARY */
+    .toolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+    .filters{display:flex;flex-wrap:wrap;gap:8px}
+    .filter-btn{border:none;padding:10px 16px;border-radius:999px;background:var(--surface);color:var(--ink);font-weight:800}
+    .filter-btn.active{background:var(--navy);color:#fff}
+    .day-list{display:grid;gap:24px}
+    .day-card{overflow:hidden;display:grid;grid-template-columns:.86fr 1.14fr}
+    .day-image{position:relative;min-height:400px}
+    .day-image img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+    .day-image::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(7,26,45,.92),rgba(7,26,45,.10))}
+    .day-image-content{position:absolute;z-index:2;left:24px;right:24px;bottom:24px;color:#fff}
+    .day-image-content h3{font-size:clamp(2rem,4vw,3.2rem)}
+    .day-body{padding:28px}
+    .day-summary{color:var(--muted);margin-bottom:18px}
+    details{border:1px solid var(--line);border-radius:20px;background:var(--surface);overflow:hidden}
+    details+details{margin-top:10px}
+    summary{list-style:none;padding:16px 18px;font-weight:800;display:flex;align-items:center;justify-content:space-between}
+    summary::-webkit-details-marker{display:none}
+    .detail-content{padding:0 18px 18px}
+    .detail-content ul{display:grid;gap:8px;padding-left:18px;color:var(--muted)}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .tag{padding:8px 11px;border-radius:999px;background:var(--beige);color:var(--coffee);font-size:.78rem;font-weight:800}
+    .day-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+
+    /* EXPERIENCE */
+    .experience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .experience{padding:26px}
+    .experience .emoji{font-size:1.9rem;margin-bottom:14px}
+    .experience h3{font-size:1.7rem}
+    .experience p{color:var(--muted);margin-top:10px}
+    .experience ul{margin-top:14px;padding-left:18px;color:var(--muted)}
+    .experience li+li{margin-top:6px}
+    .boat-card{display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+    .boat-card img{width:100%;height:100%;object-fit:cover;min-height:480px}
+    .boat-content{padding:30px}
+    .boat-content h3{font-size:clamp(2.2rem,4vw,3.8rem)}
+    .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}
+    .stat{background:var(--surface);border-radius:18px;padding:14px}
+    .stat strong{display:block;font-size:1.15rem}
+    .stat span{color:var(--muted);font-size:.82rem}
+
+    /* GASTRONOMY / CONTENT / MAP */
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .city-card{padding:24px}
+    .city-card h3{font-size:1.6rem;margin-bottom:14px}
+    .place-link{display:block;padding:11px 13px;border-radius:14px;background:var(--surface);margin-top:8px;font-weight:700;font-size:.88rem}
+    .place-link:hover{background:var(--beige);color:var(--coffee)}
+    .map-shell{display:grid;grid-template-columns:.8fr 1.2fr;overflow:hidden}
+    .map-visual{padding:30px;min-height:520px;background:linear-gradient(rgba(7,26,45,.55),rgba(7,26,45,.90)),url("https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1600&q=80") center/cover;color:#fff}
+    .map-visual h3{font-size:3rem}
+    .map-visual p{margin-top:12px;color:rgba(255,255,255,.75)}
+    .map-list{padding:26px;background:var(--beige);max-height:600px;overflow:auto}
+    .map-search{width:100%;border:none;border-radius:999px;padding:14px 16px;margin-bottom:14px;background:var(--card);color:var(--ink)}
+    .map-point{display:block;background:var(--card);padding:16px;border-radius:18px;margin-bottom:10px}
+    .map-point h4{font-family:"Playfair Display",serif;font-size:1.18rem}
+    .map-point p{color:var(--muted);font-size:.86rem}
+    .content-card{padding:24px}
+    .content-card small{color:var(--gold);font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+    .content-card h3{font-size:1.55rem;margin-top:8px}
+    .content-card p{color:var(--muted);font-size:.9rem;margin-top:10px}
+
+    /* CHECKLIST */
+    .check-grid{display:grid;grid-template-columns:1fr .8fr;gap:18px}
+    .check-card{padding:26px}
+    .check-item{display:flex;gap:10px;align-items:flex-start;padding:13px;border-radius:16px;background:var(--surface);margin-top:9px}
+    .check-item input{margin-top:5px;accent-color:var(--gold)}
+    .rain-card{padding:28px;background:var(--navy);color:#fff;border-radius:var(--radius-xl)}
+    .rain-card h3{font-size:2rem}
+    .rain-card p{color:rgba(255,255,255,.72);margin:14px 0 20px}
+
+    /* MEMORY */
+    .memory-box{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .note-card{padding:24px}
+    .note-card textarea{width:100%;min-height:180px;border:1px solid var(--line);border-radius:18px;background:var(--surface);color:var(--ink);padding:14px;resize:vertical}
+
+    /* FOOTER */
+    footer{background:var(--navy);color:#fff;padding:52px 0;text-align:center}
+    footer h2{font-size:2.2rem}
+    footer p{color:rgba(255,255,255,.65);margin-top:8px}
+    .backtop{position:fixed;right:18px;bottom:18px;z-index:950;width:46px;height:46px;border-radius:50%;border:none;background:var(--gold);color:var(--navy);font-weight:900;box-shadow:var(--shadow)}
+
+    @media(max-width:1050px){
+      .desktop-nav{display:none}
+      .mobile-toggle{display:grid}
+      .overview-grid{grid-template-columns:repeat(2,1fr)}
+      .quick-grid,.grid-4{grid-template-columns:repeat(2,1fr)}
+      .experience-grid{grid-template-columns:1fr}
+      .day-card,.boat-card,.map-shell,.check-grid,.memory-box{grid-template-columns:1fr}
+      .boat-card img{min-height:320px}
+    }
+
+    @media(max-width:680px){
+      .section{padding:64px 0}
+      .container{width:min(100% - 22px,1180px)}
+      .hero-content{padding:130px 0 58px}
+      .hero h1{font-size:3.25rem}
+      .hero-actions .btn{width:100%}
+      .destination-strip{top:72px}
+      .overview-grid,.quick-grid,.grid-4{grid-template-columns:1fr}
+      .day-image{min-height:320px}
+      .day-body{padding:20px}
+      .stat-grid{grid-template-columns:repeat(2,1fr)}
+      .mobile-menu.open{grid-template-columns:1fr}
+      .toolbar{align-items:flex-start}
+      .section-head h2{font-size:2.5rem}
+    }
+
+    @media print{
+      .topbar,.destination-strip,.backtop,.hero-actions,.toolbar,.mobile-menu{display:none!important}
+      .hero{min-height:auto;padding-top:0}
+      .section{padding:28px 0}
+      .card{box-shadow:none}
+      body{background:#fff;color:#000}
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="container topbar-inner">
+      <a href="#top" class="brand">André & Ricardo</a>
+      <div class="desktop-nav">
+        <a href="#visao">Visão geral</a>
+        <a href="#roteiro">Roteiro</a>
+        <a href="#experiencias">Experiências</a>
+        <a href="#gastronomia">Gastronomia</a>
+        <a href="#mapa">Mapa</a>
+        <a href="#conteudo">Conteúdo</a>
+        <a href="#checklist">Checklist</a>
+      </div>
+      <div class="top-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Alternar tema">◐</button>
+        <button class="icon-btn mobile-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#visao">Visão geral</a>
+    <a href="#roteiro">Roteiro</a>
+    <a href="#experiencias">Experiências</a>
+    <a href="#gastronomia">Gastronomia</a>
+    <a href="#mapa">Mapa</a>
+    <a href="#conteudo">Conteúdo</a>
+    <a href="#checklist">Checklist</a>
+    <a href="#memorias">Memórias</a>
+  </div>
+
+  <header class="hero" id="top">
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=2200&q=85" alt="Rio de Janeiro visto do alto">
+    </div>
+    <div class="container hero-content">
+      <div class="hero-badges">
+        <span class="pill">20 de julho a 3 de agosto de 2026</span>
+        <span class="pill">Rio • Paraty • Vassouras</span>
+        <span class="pill">Literatura • Praia • Café • História</span>
+      </div>
+      <h1>Rio, Paraty FLIP & Vale do Café</h1>
+      <p class="hero-copy">Um guia digital permanente para acompanhar a viagem em tempo real, registrar memórias, organizar conteúdo e transformar cada destino em narrativa.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#roteiro">Começar roteiro</a>
+        <a class="btn light" href="#mapa">Abrir mapa</a>
+        <a class="btn light" href="#conteudo">Planejar conteúdo</a>
+        <button class="btn light" onclick="window.print()">Salvar em PDF</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="destination-strip">
+    <div class="container inner">
+      <button class="destination-chip active" data-scroll="visao">Visão geral</button>
+      <button class="destination-chip" data-scroll="rio">Rio</button>
+      <button class="destination-chip" data-scroll="paraty">Paraty + FLIP</button>
+      <button class="destination-chip" data-scroll="vassouras">Vale do Café</button>
+      <button class="destination-chip" data-scroll="gastronomia">Gastronomia</button>
+      <button class="destination-chip" data-scroll="conteudo">Conteúdo</button>
+      <button class="destination-chip" data-scroll="checklist">Checklist</button>
+    </div>
+  </div>
+
+  <section class="section alt" id="visao">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Visão geral</div>
+        <h2>Uma viagem cultural entre cidade, literatura e memória</h2>
+        <p>O roteiro foi organizado para equilibrar deslocamentos, experiências principais, tempo livre, gastronomia e criação de conteúdo.</p>
+      </div>
+
+      <div class="overview-grid">
+        <article class="card overview-card"><div class="emoji">🌊</div><small>20 a 22/07</small><h3>Rio de Janeiro</h3><p>Flamengo, Urca, praia, livrarias e bares.</p></article>
+        <article class="card overview-card"><div class="emoji">📚</div><small>22 a 26/07</small><h3>Paraty</h3><p>FLIP, Centro Histórico e passeio de barco.</p></article>
+        <article class="card overview-card"><div class="emoji">☕</div><small>26 a 30/07</small><h3>Vassouras</h3><p>Museus, fazendas e patrimônio do Vale do Café.</p></article>
+        <article class="card overview-card"><div class="emoji">🚋</div><small>30/07 a 03/08</small><h3>Rio de Janeiro</h3><p>Santa Teresa, bonde, Selarón e dias livres.</p></article>
+        <article class="card overview-card"><div class="emoji">✈️</div><small>03/08</small><h3>Brasília</h3><p>Voo SDU → BSB às 11h.</p></article>
+      </div>
+
+      <div class="quick-grid">
+        <div class="quick-card"><strong>🚗 Estrada</strong>Rio → Paraty → Vassouras → Rio.</div>
+        <div class="quick-card"><strong>📖 Literatura</strong>FLIP como eixo narrativo central.</div>
+        <div class="quick-card"><strong>🏛️ História</strong>Museus, fazendas, memória e patrimônio.</div>
+        <div class="quick-card"><strong>📸 Conteúdo</strong>Hooks, takes, legendas e memórias por destino.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="roteiro">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Roteiro dinâmico</div>
+        <h2>Dia a dia, sem perder flexibilidade</h2>
+        <p>Filtre por destino e abra apenas os blocos que precisar durante a viagem.</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="rio">Rio</button>
+          <button class="filter-btn" data-filter="paraty">Paraty</button>
+          <button class="filter-btn" data-filter="vassouras">Vassouras</button>
+        </div>
+        <button class="btn soft" id="expandAll">Expandir tudo</button>
+      </div>
+
+      <div class="day-list" id="dayList"></div>
+    </div>
+  </section>
+
+  <section class="section dark" id="experiencias">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Experiências</div>
+        <h2>Momentos que definem a viagem</h2>
+        <p>Três experiências principais conectam literatura, paisagem e patrimônio.</p>
+      </div>
+
+      <div class="experience-grid">
+        <article class="card experience">
+          <div class="emoji">🚋</div>
+          <h3>Bonde de Santa Teresa</h3>
+          <p>Programado para depois do retorno de Vassouras, no dia 31/07, com Santa Teresa, Parque das Ruínas, Chácara do Céu e Escadaria Selarón.</p>
+          <div class="day-actions">
+            <a class="btn soft" target="_blank" href="https://www.instagram.com/p/Da6FD0dmVTO/?igsh=cWhhMmg5ZmhjYTFt">Ver inspiração</a>
+            <a class="btn dark" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bonde+de+Santa+Teresa+Rio+de+Janeiro">Abrir no Maps</a>
+          </div>
+        </article>
+
+        <article class="card experience">
+          <div class="emoji">📚</div>
+          <h3>FLIP em Paraty</h3>
+          <p>Casas editoriais, mesas literárias, programação paralela, cafés, livrarias e o Centro Histórico em ritmo de festival.</p>
+          <div class="day-actions">
+            <a class="btn soft" target="_blank" href="https://www.gazetasp.com.br/turismo/8-restaurantes-para-conhecer-durante-a-flip-paraty-2026/">Restaurantes da FLIP</a>
+            <a class="btn dark" target="_blank" href="https://www.instagram.com/reel/DaOsV3ruwIH/?igsh=Yjk5bmdxMmp6a3k3">Inspiração gastronômica</a>
+          </div>
+        </article>
+
+        <article class="card experience">
+          <div class="emoji">☕</div>
+          <h3>Vale do Café</h3>
+          <p>Fazendas históricas, museus e centros de memória para compreender o café, o Brasil Imperial, a escravidão e o patrimônio fluminense.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="paraty">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Paraty • 24/07/2026</div>
+        <h2>Passeio compartilhado de lancha</h2>
+        <p>Uma experiência de seis horas pela Baía de Paraty, com seis paradas e estrutura para aproveitar o mar com conforto.</p>
+      </div>
+
+      <article class="card boat-card">
+        <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=85" alt="Passeio de barco em águas tropicais">
+        <div class="boat-content">
+          <div class="eyebrow">R$ 250 por pessoa</div>
+          <h3>Ilhas, praias e fiorde tropical</h3>
+          <div class="stat-grid">
+            <div class="stat"><strong>10h</strong><span>Saída</span></div>
+            <div class="stat"><strong>16h</strong><span>Retorno</span></div>
+            <div class="stat"><strong>6h</strong><span>Duração</span></div>
+            <div class="stat"><strong>6</strong><span>Paradas</span></div>
+          </div>
+          <p><strong>Embarque:</strong> Praia do Jabaquara ou outro ponto a combinar, conforme a localização.</p>
+          <p style="margin-top:10px"><strong>Roteiro:</strong> Ilha dos Cocos, Saco do Mamanguá, Praia do Engenho, Praia do Crepúsculo, Lagoa Azul, Praia Vermelha e Forte da Tapera/Mirante.</p>
+          <p style="margin-top:10px"><strong>Inclui:</strong> cooler com gelo, caixa de som Bombox, snorkel, espaguetes flutuantes e salvatagem completa.</p>
+          <p style="margin-top:10px"><strong>Observação:</strong> parada opcional para almoço e roteiro sujeito a alterações conforme as condições climáticas.</p>
+          <div class="day-actions">
+            <a class="btn dark" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Praia+do+Jabaquara+Paraty">Local de embarque</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section green" id="vassouras">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Vale do Café</div>
+        <h2>História, memória e patrimônio</h2>
+        <p>O domingo fica dedicado aos museus; os outros dias concentram fazendas, centros culturais e caminhadas históricas.</p>
+      </div>
+
+      <div class="experience-grid">
+        <article class="card experience">
+          <div class="emoji">🏛️</div>
+          <h3>Domingo em Vassouras</h3>
+          <ul>
+            <li>Museu de Vassouras</li>
+            <li>Museu Casa da Hera</li>
+            <li>Praça Barão de Campo Belo</li>
+            <li>Centro histórico ao fim da tarde</li>
+          </ul>
+        </article>
+        <article class="card experience">
+          <div class="emoji">☕</div>
+          <h3>Fazendas de café</h3>
+          <ul>
+            <li>Fazenda São Luiz da Boa Sorte</li>
+            <li>Fazenda Santa Eufrásia</li>
+            <li>Fazenda Ponte Alta</li>
+            <li>Visitas mediante agendamento</li>
+          </ul>
+        </article>
+        <article class="card experience">
+          <div class="emoji">📜</div>
+          <h3>Memória e cultura</h3>
+          <ul>
+            <li>Centro Cultural Cazuza</li>
+            <li>Memorial Manuel Congo</li>
+            <li>Igreja Matriz</li>
+            <li>Centro histórico da cidade</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="gastronomia">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Gastronomia</div>
+        <h2>Onde comer em cada destino</h2>
+        <p>Os cards abrem diretamente no Google Maps para facilitar a decisão durante a viagem.</p>
+      </div>
+      <div class="grid-4" id="restaurantGrid"></div>
+    </div>
+  </section>
+
+  <section class="section alt" id="mapa">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Mapa afetivo</div>
+        <h2>Todos os pontos em um só lugar</h2>
+        <p>Pesquise atrações, restaurantes, museus, fazendas e hospedagens.</p>
+      </div>
+
+      <article class="card map-shell">
+        <div class="map-visual">
+          <h3>Rio → Paraty → Vassouras → Rio</h3>
+          <p>Um mapa pensado para uso rápido no celular, com acesso direto ao Google Maps.</p>
+        </div>
+        <div class="map-list">
+          <input id="mapSearch" class="map-search" placeholder="Buscar ponto..." />
+          <div id="mapPoints"></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section dark" id="conteudo">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Instagram & TikTok</div>
+        <h2>Conteúdo organizado antes, durante e depois</h2>
+        <p>Cada ideia inclui hook, takes e CTA para facilitar a gravação em viagem.</p>
+      </div>
+      <div class="grid-4" id="contentGrid"></div>
+    </div>
+  </section>
+
+  <section class="section alt" id="checklist">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Checklist</div>
+        <h2>Preparação prática da viagem</h2>
+        <p>Os itens marcados ficam salvos no navegador do celular.</p>
+      </div>
+
+      <div class="check-grid">
+        <article class="card check-card">
+          <div id="checkList"></div>
+        </article>
+        <aside class="rain-card">
+          <h3>Plano B para chuva</h3>
+          <p>No Rio: livrarias, cafés, museus e bares. Em Paraty: casas editoriais, cafés, alambiques e programação coberta. Em Vassouras: museus, interiores das fazendas e centros culturais.</p>
+          <button class="btn primary" onclick="window.print()">Salvar roteiro em PDF</button>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="memorias">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Memórias</div>
+        <h2>Um guia que continua depois da viagem</h2>
+        <p>Use estes campos para registrar descobertas, mudanças, restaurantes favoritos e ideias de conteúdo.</p>
+      </div>
+      <div class="memory-box">
+        <article class="card note-card">
+          <h3>Notas da viagem</h3>
+          <textarea id="travelNotes" placeholder="Escreva aqui descobertas, horários, impressões e mudanças no roteiro..."></textarea>
+        </article>
+        <article class="card note-card">
+          <h3>Ideias de conteúdo</h3>
+          <textarea id="contentNotes" placeholder="Registre hooks, frases, trilhas, takes e legendas..."></textarea>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <h2>Roteiro de André e Ricardo</h2>
+      <p>20 de julho a 3 de agosto de 2026</p>
+      <p>Rio de Janeiro • Paraty • Vale do Café</p>
+      <p>“Entre livros, praias, cafés e memórias: uma viagem pelo Brasil cultural.”</p>
+    </div>
+  </footer>
+
+  <button class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+
+  <script>
+    const maps = q => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+
+    const days = [
+      {
+        date:"20/07", city:"Rio de Janeiro", category:"rio", title:"Brasília → Rio",
+        image:"https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1600&q=80",
+        summary:"Chegada, base no Flamengo e primeiro contato com o Rio local.",
+        morning:["Voo Brasília → Rio","Deslocamento para o Flamengo"],
+        afternoon:["Aterro do Flamengo","Botafogo ou Urca no fim da tarde"],
+        night:["Bar Urca, Belmonte, Carmelo, Irajá Redux ou Xepa"],
+        content:"Hook: ‘Começa aqui uma viagem entre mar, livros e história.’"
+      },
+      {
+        date:"21/07", city:"Rio de Janeiro", category:"rio", title:"Praia, livrarias e bares",
+        image:"https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?auto=format&fit=crop&w=1600&q=80",
+        summary:"Um dia carioca entre Ipanema, Leblon, Arpoador e livrarias.",
+        morning:["Praia de Ipanema ou Leblon","Caminhada na orla"],
+        afternoon:["Livraria da Travessa","Argumento","Janela Livraria","Blooks"],
+        night:["Jobi, Boteco Rainha, Canastra, Galeto Sat’s ou Beco do Rato"],
+        content:"Hook: ‘Um Rio de praia, livro e boteco.’"
+      },
+      {
+        date:"22/07", city:"Paraty", category:"paraty", title:"Rio → Paraty + início da FLIP",
+        image:"https://images.unsplash.com/photo-1598846481052-f49c70618508?auto=format&fit=crop&w=1600&q=80",
+        summary:"Retirada do carro, estrada e primeira noite no Centro Histórico.",
+        morning:["Retirada do carro","Saída cedo do Rio"],
+        afternoon:["Check-in na Pousada Doce Paraty","Centro Histórico","Igreja Santa Rita e Cais"],
+        night:["Casas literárias e programação inicial da FLIP"],
+        content:"Reels: ‘Chegamos em Paraty para viver a FLIP.’"
+      },
+      {
+        date:"23/07", city:"Paraty", category:"paraty", title:"FLIP, cafés e casas editoriais",
+        image:"https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=1600&q=80",
+        summary:"Dia inteiro entre programação principal, paralela e gastronomia.",
+        morning:["Centro Histórico cedo","Fotos e cafés"],
+        afternoon:["Mesas da FLIP","Casas editoriais","Pausa na pousada"],
+        night:["Mesa principal ou evento paralelo","Jantar com reserva"],
+        content:"Hook: ‘Durante a FLIP, Paraty vira uma cidade feita de livros.’"
+      },
+      {
+        date:"24/07", city:"Paraty", category:"paraty", title:"Passeio de barco + FLIP",
+        image:"https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=80",
+        summary:"Passeio compartilhado das 10h às 16h e programação da FLIP à noite.",
+        morning:["Embarque na Praia do Jabaquara","Ilhas e praias da Baía de Paraty"],
+        afternoon:["Saco do Mamanguá","Lagoa Azul","Praia Vermelha","Forte da Tapera"],
+        night:["Retorno, banho, jantar e programação noturna"],
+        content:"Reels: ‘Paraty entre mar e literatura.’"
+      },
+      {
+        date:"25/07", city:"Paraty", category:"paraty", title:"Dia forte da FLIP",
+        image:"https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80",
+        summary:"Livrarias, mesas principais, compras de livros e última noite intensa.",
+        morning:["Café com calma","Livrarias e editoras"],
+        afternoon:["Mesas principais","Programação cultural"],
+        night:["Jantar reservado","Centro Histórico iluminado"],
+        content:"Hook: ‘O dia mais literário da viagem.’"
+      },
+      {
+        date:"26/07", city:"Vassouras", category:"vassouras", title:"Paraty → Vassouras + museus",
+        image:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
+        summary:"Chegada em Vassouras com domingo dedicado aos museus.",
+        morning:["Último café em Paraty","Estrada para Vassouras"],
+        afternoon:["Check-in na Vila Hibisco","Museu de Vassouras","Museu Casa da Hera"],
+        night:["Praça Barão de Campo Belo","Jantar no centro"],
+        content:"Reels: ‘De Paraty ao Vale do Café.’"
+      },
+      {
+        date:"27/07", city:"Vassouras", category:"vassouras", title:"Fazendas históricas",
+        image:"https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1600&q=80",
+        summary:"São Luiz da Boa Sorte pela manhã e Santa Eufrásia à tarde.",
+        morning:["Fazenda São Luiz da Boa Sorte","Museu, memorial e visita guiada"],
+        afternoon:["Fazenda Santa Eufrásia","Jardins, cafezal e casa histórica"],
+        night:["Centro histórico de Vassouras"],
+        content:"Hook: ‘O Brasil Império ainda vive no Vale do Café.’"
+      },
+      {
+        date:"28/07", city:"Vassouras", category:"vassouras", title:"Ponte Alta + memória cultural",
+        image:"https://images.unsplash.com/photo-1525344387229-da3782d11618?auto=format&fit=crop&w=1600&q=80",
+        summary:"Fazenda Ponte Alta e tarde dedicada à cultura e à memória.",
+        morning:["Fazenda Ponte Alta"],
+        afternoon:["Centro Cultural Cazuza","Memorial Manuel Congo","Igreja Matriz"],
+        night:["Centro histórico e cafés"],
+        content:"Reels: ‘Vassouras em um dia: fazenda, memória e café.’"
+      },
+      {
+        date:"29/07", city:"Vassouras", category:"vassouras", title:"Dia livre no Vale do Café",
+        image:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=80",
+        summary:"Dia flexível para repetir uma fazenda, visitar atrações pendentes ou descansar.",
+        morning:["Café sem pressa","Fotografia no centro"],
+        afternoon:["Compras locais","Atrações pendentes"],
+        night:["Última noite em Vassouras"],
+        content:"Conteúdo: detalhes, cafés, fachadas e bastidores."
+      },
+      {
+        date:"30/07", city:"Rio de Janeiro", category:"rio", title:"Vassouras → Rio",
+        image:"https://images.unsplash.com/photo-1544989164-31dc3c645987?auto=format&fit=crop&w=1600&q=80",
+        summary:"Retorno ao Flamengo e noite leve.",
+        morning:["Check-out","Última caminhada"],
+        afternoon:["Estrada para o Rio","Chegada ao Flamengo"],
+        night:["Belmonte, Carmelo, Brota ou Mitsuo"],
+        content:"Storytelling: contraste entre interior histórico e cidade."
+      },
+      {
+        date:"31/07", city:"Rio de Janeiro", category:"rio", title:"Santa Teresa + Bonde + Selarón",
+        image:"https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?auto=format&fit=crop&w=1600&q=80",
+        summary:"Dia dedicado ao bonde e ao Rio cultural e boêmio.",
+        morning:["Bonde de Santa Teresa cedo","Largo dos Guimarães"],
+        afternoon:["Parque das Ruínas","Chácara do Céu","Bar do Mineiro ou Aprazível"],
+        night:["Escadaria Selarón","Retorno ao Flamengo"],
+        content:"Hook: ‘O Rio que vai além dos cartões-postais.’"
+      },
+      {
+        date:"01/08", city:"Rio de Janeiro", category:"rio", title:"Dia livre cultural",
+        image:"https://images.unsplash.com/photo-1544989164-31dc3c645987?auto=format&fit=crop&w=1600&q=80",
+        summary:"Museus, cafés, Botafogo, Urca ou atrações pendentes.",
+        morning:["Museu ou café"],
+        afternoon:["Botafogo e livrarias"],
+        night:["Bar local"],
+        content:"Stories espontâneos e dicas rápidas."
+      },
+      {
+        date:"02/08", city:"Rio de Janeiro", category:"rio", title:"Último dia inteiro",
+        image:"https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?auto=format&fit=crop&w=1600&q=80",
+        summary:"Praia, compras, experiências pendentes e último pôr do sol.",
+        morning:["Praia ou caminhada"],
+        afternoon:["Compras e café"],
+        night:["Último pôr do sol e jantar especial"],
+        content:"Reels final com melhores momentos."
+      },
+      {
+        date:"03/08", city:"Rio de Janeiro", category:"rio", title:"Rio → Brasília",
+        image:"https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=80",
+        summary:"Café no Flamengo, devolução do carro e voo SDU → BSB às 11h.",
+        morning:["Café da manhã","Aterro do Flamengo","Deslocamento para o SDU"],
+        afternoon:["Chegada em Brasília"],
+        night:["Fim da viagem"],
+        content:"Encerramento: ‘Entre livros, praias, cafés e memórias.’"
+      }
+    ];
+
+    const restaurants = {
+      "Rio":["Bar Urca","Belmonte","Irajá Redux","Xepa","Jobi","Boteco Rainha","Galeto Sat’s","Canastra Bar","Beco do Rato"],
+      "Santa Teresa":["Aprazível","Bar do Mineiro","Explorer Bar","Sobrenatural","Bar da Fatinha"],
+      "Paraty":["Banana da Terra","Quintal das Letras","Thai Paraty","Margarida Café","Celeiro Armazém Tropical"],
+      "Vassouras":["Cafés do centro histórico","Restaurantes próximos à Praça Barão de Campo Belo"]
+    };
+
+    const mapPoints = [
+      ["Flamengo","Base no Rio","Flamengo Rio de Janeiro"],
+      ["Aterro do Flamengo","Caminhada e vista","Aterro do Flamengo Rio de Janeiro"],
+      ["Urca","Fim de tarde e bares","Urca Rio de Janeiro"],
+      ["Santa Teresa","Bonde, arte e gastronomia","Santa Teresa Rio de Janeiro"],
+      ["Escadaria Selarón","Fotos e cultura urbana","Escadaria Selarón Rio de Janeiro"],
+      ["Paraty Centro Histórico","FLIP e casario colonial","Centro Histórico Paraty"],
+      ["Pousada Doce Paraty","Hospedagem","Pousada Doce Paraty"],
+      ["Praia do Jabaquara","Embarque da lancha","Praia do Jabaquara Paraty"],
+      ["Museu de Vassouras","Museu local","Museu de Vassouras"],
+      ["Museu Casa da Hera","Patrimônio histórico","Museu Casa da Hera Vassouras"],
+      ["Fazenda São Luiz da Boa Sorte","Fazenda histórica","Fazenda São Luiz da Boa Sorte"],
+      ["Fazenda Santa Eufrásia","Fazenda histórica","Fazenda Santa Eufrásia"],
+      ["Fazenda Ponte Alta","Fazenda histórica","Fazenda Ponte Alta Vassouras"],
+      ["Centro Cultural Cazuza","Cultura e memória","Centro Cultural Cazuza Vassouras"],
+      ["Memorial Manuel Congo","Memória histórica","Memorial Manuel Congo Vassouras"],
+      ["Vila Hibisco","Hospedagem em Vassouras","Vila Hibisco Pousada e Apart"]
+    ];
+
+    const contentIdeas = [
+      ["Rio","Rio mais cultural e boêmio","O Rio que a gente vive entre praia, livro e boteco.","Aterro, Urca, Santa Teresa, livrarias e bares.","Salva esse roteiro para fugir do óbvio no Rio."],
+      ["Rio","Santa Teresa de bonde","O Rio ainda tem um bonde que parece atravessar o tempo.","Estação, trilhos, casarões, Parque das Ruínas e Selarón.","Você faria esse passeio?"],
+      ["Paraty","Como é viver a FLIP","Durante a FLIP, Paraty vira uma cidade feita de livros.","Casario, mesas, cafés, editoras e noite colonial.","Marca alguém que faria essa viagem literária."],
+      ["Paraty","Paraty entre mar e literatura","Em Paraty, o dia começa no mar e termina entre livros.","Lancha, ilhas, mergulho, Centro Histórico e jantar.","Salva para montar seu roteiro da FLIP."],
+      ["Vassouras","Vale do Café","O Vale do Café é uma viagem pela história do Brasil.","Fazendas, museus, jardins, café e centro histórico.","Salva para conhecer esse lado do Rio."],
+      ["Viagem","Resumo final","Entre livros, praias, cafés e memórias.","Melhores takes dos três destinos.","Qual parte dessa viagem você mais gostaria de viver?"]
+    ];
+
+    const checklist = [
+      "Reservar restaurantes durante a FLIP",
+      "Acompanhar programação oficial da FLIP 2026",
+      "Confirmar passeio de barco para 24/07",
+      "Agendar fazendas em Vassouras",
+      "Confirmar horários do Museu de Vassouras e Casa da Hera",
+      "Confirmar funcionamento do Bonde de Santa Teresa",
+      "Levar calçado confortável para ruas de pedra",
+      "Separar capa de chuva leve",
+      "Carregar power bank",
+      "Levar GoPro e acessórios",
+      "Levar Ray-Ban Meta",
+      "Baixar mapas offline",
+      "Separar documentos e reservas",
+      "Confirmar devolução do carro antes do voo de 03/08"
+    ];
+
+    function renderDays(filter="all"){
+      const root = document.getElementById("dayList");
+      const filtered = filter==="all" ? days : days.filter(d=>d.category===filter);
+      root.innerHTML = filtered.map((d,i)=>`
+        <article class="card day-card" id="${d.category}-${i}">
+          <div class="day-image">
+            <img src="${d.image}" alt="${d.title}">
+            <div class="day-image-content">
+              <span class="pill">${d.date} • ${d.city}</span>
+              <h3>${d.title}</h3>
+            </div>
+          </div>
+          <div class="day-body">
+            <p class="day-summary">${d.summary}</p>
+            ${detail("Manhã",d.morning)}
+            ${detail("Tarde",d.afternoon)}
+            ${detail("Noite",d.night)}
+            <div class="tags">
+              <span class="tag">📸 ${d.content}</span>
+            </div>
+            <div class="day-actions">
+              <a class="btn dark" target="_blank" href="${maps(d.title+" "+d.city)}">Abrir no Maps</a>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function detail(title,items){
+      return `<details><summary>${title}<span>＋</span></summary><div class="detail-content"><ul>${items.map(i=>`<li>${i}</li>`).join("")}</ul></div></details>`;
+    }
+
+    function renderRestaurants(){
+      document.getElementById("restaurantGrid").innerHTML = Object.entries(restaurants).map(([city,items])=>`
+        <article class="card city-card">
+          <h3>${city}</h3>
+          ${items.map(item=>`<a class="place-link" target="_blank" href="${maps(item+" "+city)}">${item}</a>`).join("")}
+        </article>
+      `).join("");
+    }
+
+    function renderMap(query=""){
+      const filtered = mapPoints.filter(([name])=>name.toLowerCase().includes(query.toLowerCase()));
+      document.getElementById("mapPoints").innerHTML = filtered.map(([name,desc,q])=>`
+        <a class="map-point" target="_blank" href="${maps(q)}">
+          <h4>${name}</h4><p>${desc}</p>
+        </a>
+      `).join("");
+    }
+
+    function renderContent(){
+      document.getElementById("contentGrid").innerHTML = contentIdeas.map(([place,title,hook,takes,cta])=>`
+        <article class="card content-card">
+          <small>${place}</small>
+          <h3>${title}</h3>
+          <p><strong>Hook:</strong> ${hook}</p>
+          <p><strong>Takes:</strong> ${takes}</p>
+          <p><strong>CTA:</strong> ${cta}</p>
+        </article>
+      `).join("");
+    }
+
+    function renderChecklist(){
+      const saved = JSON.parse(localStorage.getItem("tripChecklist") || "{}");
+      document.getElementById("checkList").innerHTML = checklist.map((item,i)=>`
+        <label class="check-item">
+          <input type="checkbox" data-check="${i}" ${saved[i] ? "checked" : ""}>
+          <span>${item}</span>
+        </label>
+      `).join("");
+      document.querySelectorAll("[data-check]").forEach(box=>{
+        box.addEventListener("change",()=>{
+          const state = {};
+          document.querySelectorAll("[data-check]").forEach(b=>state[b.dataset.check]=b.checked);
+          localStorage.setItem("tripChecklist",JSON.stringify(state));
+        });
+      });
+    }
+
+    function setupNotes(){
+      ["travelNotes","contentNotes"].forEach(id=>{
+        const el=document.getElementById(id);
+        el.value=localStorage.getItem(id)||"";
+        el.addEventListener("input",()=>localStorage.setItem(id,el.value));
+      });
+    }
+
+    document.querySelectorAll(".filter-btn").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+        btn.classList.add("active");
+        renderDays(btn.dataset.filter);
+      });
+    });
+
+    document.querySelectorAll(".destination-chip").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        document.querySelectorAll(".destination-chip").forEach(b=>b.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.scroll)?.scrollIntoView({behavior:"smooth"});
+      });
+    });
+
+    document.getElementById("expandAll").addEventListener("click",()=>{
+      const details=[...document.querySelectorAll("#dayList details")];
+      const shouldOpen=details.some(d=>!d.open);
+      details.forEach(d=>d.open=shouldOpen);
+      document.getElementById("expandAll").textContent=shouldOpen?"Recolher tudo":"Expandir tudo";
+    });
+
+    document.getElementById("mapSearch").addEventListener("input",e=>renderMap(e.target.value));
+
+    document.getElementById("menuToggle").addEventListener("click",()=>{
+      document.getElementById("mobileMenu").classList.toggle("open");
+    });
+
+    document.querySelectorAll("#mobileMenu a").forEach(a=>a.addEventListener("click",()=>document.getElementById("mobileMenu").classList.remove("open")));
+
+    const savedTheme=localStorage.getItem("theme");
+    if(savedTheme==="dark") document.body.classList.add("dark");
+    document.getElementById("themeToggle").addEventListener("click",()=>{
+      document.body.classList.toggle("dark");
+      localStorage.setItem("theme",document.body.classList.contains("dark")?"dark":"light");
+    });
+
+    renderDays();
+    renderRestaurants();
+    renderMap();
+    renderContent();
+    renderChecklist();
+    setupNotes();
+  </script>
+</body>
+</html>
